@@ -134,8 +134,8 @@ while flag:
 
 	#output
 	cipher_text = c = encrypt(plain_text, key)
-	print(f"[*] Textul criptat  : {cipher_text}")
-	print(f"[*] Textul decriptat: {decrypt(cipher_text, key)}")
+	print(f"[*] Text criptat:   {cipher_text}")
+	print(f"[*] Text decriptat: {decrypt(cipher_text, key)}")
 
 	flag = True if input(
 	    "\n[?] Continuăm? (d / n): ").lower() == "d" else False

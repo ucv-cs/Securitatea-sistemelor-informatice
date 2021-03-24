@@ -184,13 +184,9 @@ int main(int argc, const char* argv[]) {
 		}
 
 		// afiseaza textul criptat si pe cel decriptat (ca verificare)
-		for (int i = 0; i < m + 6; i++) {
-			key.b = i;
-			cout << i << ": " << i % m << endl;
-			cipher_text = encrypt(plain_text, key);
-			cout << "\n[*] Text criptat:   " << cipher_text << endl;
-			cout << "[*] Text decriptat: " << decrypt(cipher_text, key) << endl;
-		}
+		cipher_text = encrypt(plain_text, key);
+		cout << "\n[*] Text criptat:   " << cipher_text << endl;
+		cout << "[*] Text decriptat: " << decrypt(cipher_text, key) << endl;
 
 		// controlul repetarii
 		cout << "\n[?] Continuam? (d / n): ";
