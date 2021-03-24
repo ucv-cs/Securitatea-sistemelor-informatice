@@ -73,7 +73,7 @@ print(f"Lungimea alfabetului: m = {m}")
 #input de la utilizator
 flag = True
 while flag:
-	plain_text = t = input("Scrie textul clar: ")
+	plain_text = t = input("[*] Scrie textul care trebuie criptat (ASCII): ")
 	while True:
 		try:
 			key = int(input("[*] Scrie cheia (număr întreg): "))

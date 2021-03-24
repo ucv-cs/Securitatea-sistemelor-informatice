@@ -160,13 +160,13 @@ int main(int argc, const char* argv[]) {
 	bool flag = true;
 	while (flag) {
 		// obtine de la utilizator textul in clar
-		cout << "Scrie textul care trebuie criptat (ASCII): ";
+		cout << "[*] Scrie textul care trebuie criptat (ASCII): ";
 		getline(cin, plain_text);
 
 		// obtine cheia si verifica indeplinirea conditiei: a si m coprime
 		//  <=> (gcd(a, m) = 1); repeta solicitarea pana cand conditia se
 		//  indeplineste
-		cout << "Scrie cheia (numerele a si b separate prin spatiu): ";
+		cout << "[*] Scrie cheia (numerele a si b separate prin spatiu): ";
 		while (!(cin >> key.a >> key.b)) {
 			cout << "[!] Trebuie scrise doua numere intregi: ";
 			clear_cin();
