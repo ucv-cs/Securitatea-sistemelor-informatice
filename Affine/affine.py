@@ -124,7 +124,7 @@ while flag:
 			if a == 0 or gcd(a, m) != 1:
 				a = int(
 				    input(
-				        f"[!] a și m = {m} trebuie să fie coprime.\n[!] Scrie o altă valoare pentru "
+				        f"[!] a și m = {m} trebuie să fie coprime, iar a nenul.\n[!] Scrie o altă valoare pentru "
 				        "a: "))
 			b = int(input("[*] b = "))
 			break
