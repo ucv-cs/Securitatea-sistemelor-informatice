@@ -1,5 +1,6 @@
 """
 Implementare a algoritmului de criptare Affine.
+https://github.com/ucv-cs/Securitatea-sistemelor-informatice
 """
 import sys
 
@@ -120,7 +121,7 @@ while flag:
 		try:
 			a = int(input("[*] a = "))
 			# verificarea condiției: gcd(a, m) = 1
-			if gcd(a, m) != 1:
+			if a == 0 or gcd(a, m) != 1:
 				a = int(
 				    input(
 				        f"[!] a și m = {m} trebuie să fie coprime.\n[!] Scrie o altă valoare pentru "
@@ -128,7 +129,7 @@ while flag:
 			b = int(input("[*] b = "))
 			break
 		except:
-			print("[!] Trebuie scrise numere întregi!")
+			print("[!] Trebuie scrise numere întregi nenule!")
 
 	key = k = (a, b)
 

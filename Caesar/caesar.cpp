@@ -10,6 +10,7 @@
  * printabil: de la 32 = spatiu la 126 = ~); alfabetul are maparea (ASCII ->
  * index): 32 -> 0; 33 -> 1 ...; 126 -> 94
  * N.B.: programul poate prezenta si urme de validare a inputului :)
+ * https://github.com/ucv-cs/Securitatea-sistemelor-informatice
  */
 
 #include <iostream>	 // cin, cout, endl
