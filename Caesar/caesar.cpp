@@ -43,12 +43,11 @@ int mod(int a, int b) {
  * @return stringul criptat
  */
 string encrypt(string text, int key) {
-	string result;
 	for (int i = 0; i < text.length(); i++) {
-		result += char(mod(text[i] - low_char + key, m) + low_char);
+		text[i] = char(mod(text[i] - low_char + key, m) + low_char);
 	}
 
-	return result;
+	return text;
 }
 
 /**
@@ -59,11 +58,11 @@ string encrypt(string text, int key) {
  * @return stringul decriptat
  */
 string decrypt(string text, int key) {
-	string result;
 	for (int i = 0; i < text.length(); i++) {
-		result += char(mod(text[i] - low_char - key, m) + low_char);
+		text[i] = char(mod(text[i] - low_char - key, m) + low_char);
 	}
-	return result;
+
+	return text;
 }
 
 /**

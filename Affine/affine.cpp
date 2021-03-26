@@ -93,12 +93,11 @@ int invert(int a, int m) {
  * @return stringul criptat
  */
 string encrypt(string text, struct K key) {
-	string result;
 	for (int i = 0; i < text.length(); i++) {
-		result += char(mod(key.a * (text[i] - low_char) + key.b, m) + low_char);
+		text[i] = char(mod(key.a * (text[i] - low_char) + key.b, m) + low_char);
 	}
 
-	return result;
+	return text;
 }
 
 /**
@@ -110,12 +109,12 @@ string encrypt(string text, struct K key) {
  * @return stringul decriptat
  */
 string decrypt(string text, struct K key) {
-	string result;
 	int a_inv = invert(key.a, m);
 	for (int i = 0; i < text.length(); i++) {
-		result += char(mod(a_inv * (text[i] - low_char - key.b), m) + low_char);
+		text[i] = char(mod(a_inv * (text[i] - low_char - key.b), m) + low_char);
 	}
-	return result;
+
+	return text;
 }
 
 /**
