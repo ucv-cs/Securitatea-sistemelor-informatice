@@ -1,37 +1,84 @@
 /**
  * T1: Implementati un sistem criptografic bazat pe functia XOR.
  * https://github.com/ucv-cs/Securitatea-sistemelor-informatice
+ * Nota: era suficienta o singura functie xor pentru criptare/decriptare, insa
+ * pentru ca aplicatia are optiunea (implicita) de afisare a outputului ca
+ * numere hexazecimale, a fost necesara separarea functiilor de
+ * criptare/decriptare.
  */
 
+#include <cstdio>	 // sscanf()
+#include <iomanip>	 // hex, setfill
 #include <iostream>	 // cout, cin, endl
-#include <string>	 // getline()
+#include <sstream>	 // stringstream
+#include <string>	 // getline(), stoi()
 
 using namespace std;
 
-bool hex_output = false;
-
-// string int_as_hex(string text) {
-
-// }
-
-// string hex_as_int(string text) {
-// }
+// setarea implicita de afisare
+bool hex_output = true;
 
 /**
- * Cripteaza/decripteaza un text cu o cheie, folosind operatia xor.
+ * Cripteaza un text cu o cheie, folosind operatia xor.
  *
  * @param text
  * @param key
- * @return textul criptat/decriptat
+ * @return textul criptat
  */
-string xor_string(string text, string key) {
-	for (int i = 0; i < text.length(); i++) {
-		// pentru fiecare caracter din input realizeaza xor cu fiecare caracter
-		// din cheie, repetand, daca e cazul tot continutul cheii
-		text[i] = text[i] ^ key[i % key.length()];
+string encrypt(string text, string key) {
+	string result;
+	stringstream temp;
+
+	if (hex_output) {
+		for (int i = 0; i < text.length(); i++) {
+			// pentru fiecare caracter din input realizeaza xor cu fiecare
+			// caracter din cheie, repetand, daca e cazul tot continutul cheii
+			// + converteste fiecare int in format hexazecimal (2 caractere)
+			temp << setfill('0') << setw(2) << hex
+				 << int(text[i] ^ key[i % key.length()]);
+		}
+		result = temp.str();
+	} else {
+		for (int i = 0; i < text.length(); i++) {
+			// pentru fiecare caracter din input realizeaza xor cu fiecare
+			// caracter din cheie, repetand, daca e cazul tot continutul cheii
+			text[i] = text[i] ^ key[i % key.length()];
+		}
+		result = text;
 	}
 
-	return text;
+	return result;
+}
+
+/**
+ * Decripteaza un text cu o cheie, folosind operatia xor.
+ *
+ * @param text
+ * @param key
+ * @return textul decriptat
+ */
+string decrypt(string text, string key) {
+	string result;
+	string temp;
+
+	if (hex_output) {
+		// dacă outputul este in format hexazecimal, trebuie citite grupuri
+		// de cate 2 caractere, apoi transformate in int
+		for (int i = 0; i < text.length(); i++) {
+			if ((i + 1) % 2 == 0) {
+				int j;
+				sscanf(text.substr(i - 1, 2).c_str(), "%x", &j);
+				temp += char(j);
+			}
+		}
+		text = temp;
+	}
+
+	for (int i = 0; i < text.length(); i++) {
+		result += text[i] ^ key[i % key.length()];
+	}
+
+	return result;
 }
 
 /**
@@ -76,9 +123,9 @@ int main(int argc, const char* argv[]) {
 		}
 
 		// afiseaza textul criptat si pe cel decriptat (ca verificare)
-		cipher_text = xor_string(plain_text, key);
+		cipher_text = encrypt(plain_text, key);
 		cout << "\n[*] Text criptat:   " << cipher_text << endl;
-		cout << "[*] Text decriptat: " << xor_string(cipher_text, key) << endl;
+		cout << "[*] Text decriptat: " << decrypt(cipher_text, key) << endl;
 
 		// controlul repetarii
 		cout << "\n[?] Continuam? (d / n): ";
