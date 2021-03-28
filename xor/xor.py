@@ -4,12 +4,13 @@ https://github.com/ucv-cs/Securitatea-sistemelor-informatice
 """
 import sys
 
+# setarea implicită de afișare
 hex_output = True
 
 
 def encrypt(text, key):
 	"""
-	Cripteaza un text cu o cheie, folosind operatia xor.
+	Criptează un text cu o cheie, folosind operația xor.
 	@param text
 	@param key
 	@returns textul criptat
@@ -27,7 +28,7 @@ def encrypt(text, key):
 
 def decrypt(text, key):
 	"""
-	Decripteaza un text cu o cheie, folosind operatia xor.
+	Decriptează un text cu o cheie, folosind operația xor.
 	@param text
 	@param key
 	@returns textul decriptat
@@ -60,10 +61,12 @@ def main():
 		global hex_output
 		hex_output = False
 
+	separator = "\n----------------------"
+
 	# input de la utilizator
 	flag = True
 	while flag:
-		plain_text = input("[*] Scrie textul care trebuie criptat (ASCII): ")
+		plain_text = input("[*] Scrie textul de criptat: ")
 		while True:
 			key = input("[*] Scrie cheia: ")
 			if key == "":
@@ -73,11 +76,12 @@ def main():
 
 		# output
 		cipher_text = encrypt(plain_text, key)
-		print(f"[*] Text criptat:   {cipher_text}")
+		print(f"\n[*] Text criptat:   {cipher_text}")
 		print(f"[*] Text decriptat: {decrypt(cipher_text, key)}")
 
 		flag = True if input(
 		    "\n[?] Continuăm? (d / n): ").lower() == "d" else False
+		print(separator)
 
 
 if __name__ == "__main__":

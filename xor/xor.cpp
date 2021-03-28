@@ -62,7 +62,7 @@ string decrypt(string text, string key) {
 	string temp;
 
 	if (hex_output) {
-		// dacă outputul este in format hexazecimal, trebuie citite grupuri
+		// daca outputul este in format hexazecimal, trebuie citite grupuri
 		// de cate 2 caractere, apoi transformate in int
 		for (int i = 0; i < text.length(); i++) {
 			if ((i + 1) % 2 == 0) {
@@ -95,10 +95,10 @@ void clear_cin() {
 int main(int argc, const char* argv[]) {
 	// citeste argumentele programului
 	for (int i = 1; i < argc; i++) {
-		if (string(argv[i]) == "-h") {
-			// output reprezentat hexazecimal
-			// implicit, reprezentarea este in ASCII
-			hex_output = true;
+		if (string(argv[i]) == "-a") {
+			// output reprezentat in ASCII
+			// implicit, reprezentarea este hexazecimala
+			hex_output = false;
 		}
 	}
 
