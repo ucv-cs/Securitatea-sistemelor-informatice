@@ -8,6 +8,15 @@
 
 using namespace std;
 
+bool hex_output = false;
+
+// string int_as_hex(string text) {
+
+// }
+
+// string hex_as_int(string text) {
+// }
+
 /**
  * Cripteaza/decripteaza un text cu o cheie, folosind operatia xor.
  *
@@ -16,14 +25,13 @@ using namespace std;
  * @return textul criptat/decriptat
  */
 string xor_string(string text, string key) {
-	string result;
 	for (int i = 0; i < text.length(); i++) {
 		// pentru fiecare caracter din input realizeaza xor cu fiecare caracter
 		// din cheie, repetand, daca e cazul tot continutul cheii
-		result += char(text[i] ^ key[i % key.length()]);
+		text[i] = text[i] ^ key[i % key.length()];
 	}
 
-	return result;
+	return text;
 }
 
 /**
@@ -37,7 +45,16 @@ void clear_cin() {
 /**
  * Executia programului.
  */
-int main() {
+int main(int argc, const char* argv[]) {
+	// citeste argumentele programului
+	for (int i = 1; i < argc; i++) {
+		if (string(argv[i]) == "-h") {
+			// output reprezentat hexazecimal
+			// implicit, reprezentarea este in ASCII
+			hex_output = true;
+		}
+	}
+
 	string plain_text;
 	string cipher_text;
 	string key;
