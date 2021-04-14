@@ -1,3 +1,26 @@
+/**
+ * T2: Implementati propria varianta de LFSR
+ * 1. Descriere versiune LFSR (proprie)
+ * sau
+ * 2. Descriere LFSR (propriu sau o varianta existenta in literatura de
+ * specialitate) si implementare
+ * https://github.com/ucv-cs/Securitatea-sistemelor-informatice
+ *
+ * R: Programul contine o forma generalizata de generator LFSR, care permite
+ * utilizatorului sa introduca diferite configuratii de tip <polinom, lungime a
+ * outputului, valoare initiala> pentru LFSR.
+ * Dupa configurare este afisat outputul LFSR-ului in reprezentare binara
+ * continua. Acest output poate fi utilizat imediat intr-un sistem de criptare
+ * XOR (v. Tema 1).
+ *
+ * Se poate testa si observa comportamentul LFSR-ului atat cu polinoame
+ * primitive, cat si cu polinoame reductibile; exemplu de lista cu polinoamele
+ * primitive: https://www.partow.net/programming/polynomials/index.html
+ * Pentru un output mai complex, poate fi combinat outputul din mai multe
+ * LFSR-uri, generate de aceeasi functie, dar cu configuratie diferita (ex.
+ * lfsr(P(X)) + lfsr(Q(X))).
+ */
+
 #include <algorithm>  // sort()
 #include <iostream>	  // cout, cin
 #include <iterator>	  // istream_iterator
